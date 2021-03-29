@@ -1,0 +1,38 @@
+<div [className]="'main-wrapper'">
+  <div [className]="'main-left'">
+    <h1>Type ListName</h1>
+    <form #myForm="ngForm" (ngSubmit)="save(myForm)">
+      <input type="text" name="add" [(ngModel)]="list.title" >
+      <button>add</button>
+    </form>
+    <h3>Find</h3>
+    <form #findForm="ngForm" (ngSubmit)="find(findForm)">
+      <input type="text" name="find" [(ngModel)]="findForm.value.change" >
+      <button>find</button>
+    </form>
+
+    <button (click)="ngOnInit()">getAll</button>
+
+    <div *ngFor="let listOne of lists" [className]="'list'">
+      <div>
+<!--        {{listOne.id}}-->
+        Name: {{listOne?.title}}
+        <form #myFormTwo="ngForm" (ngSubmit)="changeNameList(myFormTwo, listOne)">
+          <input type="text" name="change" [(ngModel)]="myFormTwo.value.change">
+          <button>change List Name</button>
+        </form>
+      </div>
+      <div *ngIf="listOne.updatedAt">{{listOne.updatedAt}}-UPDATE</div>
+      <div [className]="'list_right'">
+        <button (click)="oneTodo(listOne)">TODOLIST</button>
+        <span>Create {{listOne?.createdAt}}</span>
+        <span (click)="delete(listOne.id)">&#10006;</span>
+      </div>
+    </div>
+  </div>
+
+
+  <div [className]="'main-right'">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<form #myTodoForm="ngForm" (ngSubmit)="saveTodo(myTodoForm)">
+  title
+  <input type="text" name="title" [(ngModel)]="todo.title" >
+  body
+  <input type="text" name="body" [(ngModel)]="todo.body" >
+  <button>add</button>
+</form>
+
+<div *ngFor="let todoe of todos">
+  Заголовок{{todoe.title}} - Опис{{todoe.body}} - {{todoe.finalDate}}
+  <form #myTodoFormTwo="ngForm" (ngSubmit)="saveChange(myTodoFormTwo, todoe)">
+    Change title
+    <input type="text" name="title" [(ngModel)]="myTodoFormTwo.value.title" >
+    Change body
+    <input type="text" name="body" [(ngModel)]="myTodoFormTwo.value.body" >
+    <button>change</button>
+    <span (click)="delete(todoe.id)">&#10006;</span>
+</form>
+</div>
+
+<router-outlet></router-outlet>

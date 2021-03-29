@@ -1,0 +1,29 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.list{
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  margin: 5px 0;
+  line-height: 30px;
+}
+.list_right{
+  display: inline;
+}
+
+.main-wrapper{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.main-right{
+  width: 45%;
+}
+.main-left{
+  width: 45%;
+}
